@@ -7,7 +7,7 @@ const windowWidth = Dimensions.get("window").width;
 const Finish = (props) => {
     const {player} = useSelector((state) => state)
     return (
-        <View style={() => props.navigation.push("Home")}>
+        <View style={styles.container}>
             <Text
                 style={{
                     textAlign: "center",
