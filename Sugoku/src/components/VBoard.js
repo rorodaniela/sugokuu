@@ -1,21 +1,25 @@
 import React from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
-// import { useSelector } from "react-redux";
+import { StyleSheet, View, Text, TextInput, Dimensions } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { updateBoard } from "../store/actions/sugokuAction";
 
+
+const windowWidth = Dimensions.get("window").width;
 export const VBoard = (props) => {
+    const {newBoard} = useSelector((state) => state)
+    const dispatch = useDispatch()
 
     const handleOnChange = (value, j) => {
-        const newBoard = props.boards
-        newBoard[props.i][j] = value
-        props.setBoards(newBoard)
-        console.log(newBoard, "<< baru");
+        let answer = JSON.parse(JSON.stringify(newBoard))
+        answer[props.i][j] = Number(value)
+        dispatch(updateBoard(answer));
     }
 
     return (
         <View style={styles.Container}>
             {props.board.map((el, j) => {
                 if (el === 0) {
-                    return <TextInput onChangeText={(value) => handleOnChange(value, j)} key={j} keyboardType="numeric" style={styles.Box1} ></TextInput>;
+                    return <TextInput onChangeText={(value) => handleOnChange(value, j)} key={j} maxLength={1} keyboardType="numeric" style={styles.Box1} ></TextInput>;
                 } else {
                     return (
                         <View key={j} style={styles.Box2}>
@@ -29,13 +33,12 @@ export const VBoard = (props) => {
 };
 const styles = StyleSheet.create({
     Container: {
-        flex: 1,
-        flexDirection: "column",
+        flexDirection: "row"
     },
     Box1: {
         backgroundColor: "#FEF3DE",
-        width: 20,
-        height: 20,
+        width: (windowWidth - 40) / 9,
+        height: (windowWidth - 40) / 9,
         borderColor: "white",
         borderWidth: 2,
         justifyContent: "center",
@@ -43,13 +46,13 @@ const styles = StyleSheet.create({
     },
     Box2: {
         backgroundColor: "#FF6961",
-        width: 20,
-        height: 20,
+        width: (windowWidth - 40) / 9,
+        height: (windowWidth - 40) / 9,
         borderColor: "white",
         borderWidth: 1,
         justifyContent: "center",
         alignItems: "center",
-    }
+    },
 });
 
 export default VBoard;
