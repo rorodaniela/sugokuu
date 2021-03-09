@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 
 const windowWidth = Dimensions.get("window").width;
 
-const Finish = () => {
+const Finish = (props) => {
     const {player} = useSelector((state) => state)
     return (
-        <View style={styles.container}>
+        <View style={() => props.navigation.push("Home")}>
             <Text
                 style={{
                     textAlign: "center",
@@ -35,7 +35,7 @@ const Finish = () => {
                 );
             })}
             <View style={styles.ButtonLevel}>
-                <Button title="Back To Home" color="black" />
+                <Button onPress={() => props.navigation.push('Home')} title="Back To Home" color="black" />
             </View>
         </View>
     );
