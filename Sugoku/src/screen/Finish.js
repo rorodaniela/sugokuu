@@ -5,7 +5,12 @@ import { useSelector } from "react-redux";
 const windowWidth = Dimensions.get("window").width;
 
 const Finish = (props) => {
-    const {player} = useSelector((state) => state)
+
+    const handlePlayAgain = () => {
+        props.navigation.push("Home");
+    };
+
+    const {winner} = useSelector((state) => state)
     return (
         <View style={styles.container}>
             <Text
@@ -15,27 +20,32 @@ const Finish = (props) => {
                     fontWeight: "bold",
                     fontSize: 45,
                     marginBottom: 45,
+                    
                 }}
             >
                 Leader Board
             </Text>
-            {player?.map((el) => {
-                return (
-                    <Text
-                        style={{
-                            textAlign: "center",
-                            color: "black",
-                            fontWeight: "bold",
-                            fontSize: 25,
-                            marginBottom: 45,
-                        }}
-                    >
-                        {el}
-                    </Text>
-                );
-            })}
+            {
+                winner.length > 0 ? (
+                    winner.map((el, idx) => {
+                        return (
+                            <View
+                                style={{borderWidth:1, borderRadius:3, borderColor: 'black', backgroundColor: "#F9F7E8", width:200, height: 35, justifyContent: 'center' }}
+                            >
+                                <Text style={{textAlign: 'center', fontSize: 20}}>{el}</Text>
+                            </View>
+                        );
+                    })
+            ) : (
+                <Text>No one win this game yet :(</Text>
+            )
+            }
             <View style={styles.ButtonLevel}>
-                <Button onPress={() => props.navigation.push('Home')} title="Back To Home" color="black" />
+                <Button
+                    onPress={handlePlayAgain}
+                    title="Play Again"
+                    color="black"
+                />
             </View>
         </View>
     );
@@ -51,10 +61,9 @@ const styles = StyleSheet.create({
     ButtonLevel: {
         backgroundColor: "white",
         borderWidth: 1,
-        marginTop: 20,
-        marginRight: 20,
+        marginTop: 50,
         borderRadius: 5,
-        width: windowWidth / 8,
+        width: windowWidth / 3,
     },
 });
 export default Finish

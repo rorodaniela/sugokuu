@@ -14,9 +14,9 @@ export default function App() {
       <Provider store={store}>
           <NavigationContainer>
               <Stack.Navigator>
-                  <Stack.Screen name="Finish" component={Finish} options={{ headerShown: false }}/>
                   <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
                   <Stack.Screen name="Game" component={Board} options={{ title: '' }}/>
+                  <Stack.Screen name="Finish" component={Finish} options={{ headerShown: false }}/>
               </Stack.Navigator>
           </NavigationContainer>
       </Provider>

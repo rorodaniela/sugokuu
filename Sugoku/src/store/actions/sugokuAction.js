@@ -8,12 +8,10 @@ export const fetchBoard = (level) => {
                 { method: "GET" }
             );
             const data = await response.json();
-            if (data) {
-                dispatch({
-                    type: "BOARD/FETCH",
-                    payload: data.board,
-                });
-            }
+            dispatch({
+                type: "BOARD/FETCH",
+                payload: data.board,
+            });
         } catch (error) {
             console.log(error);   
         }

@@ -33,25 +33,29 @@ export const VBoard = (props) => {
 };
 const styles = StyleSheet.create({
     Container: {
-        flexDirection: "row"
+        flexDirection: "row",
     },
     Box1: {
         backgroundColor: "#FEF3DE",
-        width: (windowWidth - 40) / 9,
-        height: (windowWidth - 40) / 9,
+        width: (windowWidth - 80) / 9,
+        height: (windowWidth - 80) / 9,
         borderColor: "white",
         borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
+        textAlign: "center",
+        fontWeight: "bold",
+        borderRadius: 3,
     },
     Box2: {
         backgroundColor: "#FF6961",
-        width: (windowWidth - 40) / 9,
-        height: (windowWidth - 40) / 9,
+        width: (windowWidth - 80) / 9,
+        height: (windowWidth - 80) / 9,
         borderColor: "white",
         borderWidth: 1,
         justifyContent: "center",
         alignItems: "center",
+        borderRadius: 3,
     },
 });
 

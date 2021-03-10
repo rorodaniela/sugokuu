@@ -27,7 +27,7 @@ const Home = (props) => {
                     <Button
                         title="Go to Game"
                         onPress={() => handleDifficulty("easy")}
-                        title="EASY"
+                        title="Easy"
                         color="black"
                     />
                 </View>
@@ -35,15 +35,16 @@ const Home = (props) => {
                     <Button
                         title="Go to Game"
                         onPress={() => handleDifficulty("medium")}
-                        title="MEDIUM"
+                        title="Medium"
                         color="black"
+                        style={{fontWeight: 'bold'}}
                     />
                 </View>
                 <View style={styles.ButtonLevel}>
                     <Button
                         title="Go to Game"
                         onPress={() => handleDifficulty("hard")}
-                        title="HARD"
+                        title="Hard"
                         color="black"
                     />
                 </View>
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
         fontSize: 25,
-        marginTop: 20
+        marginTop: 20,
     },
     Input: {
         color: "black",
@@ -88,18 +89,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: 300,
         height: 40,
-        borderRadius: 30
+        borderRadius: 30,
     },
     ButtonLevel: {
         backgroundColor: "white",
         borderWidth: 1,
         marginTop: 20,
         marginRight: 20,
-        borderRadius: 5
-        
+        borderRadius: 5,
     },
     Row: {
-        flexDirection: 'row'
-    }
+        flexDirection: "row",
+        marginLeft: 20
+    },
 });
 export default Home
